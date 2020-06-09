@@ -15,7 +15,7 @@ public class SfgDiApplication {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
 
 		//MyController is a class and we are creating a bean using the mycontroller objext
-		MyController myController = (MyController) ctx.getBean("myController");git
+		MyController myController = (MyController) ctx.getBean("myController");
 
 		String greeting = myController.sayHello();
 
