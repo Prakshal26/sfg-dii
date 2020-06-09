@@ -9,9 +9,13 @@ import org.springframework.context.ApplicationContext;
 public class SfgDiApplication {
 
 	public static void main(String[] args) {
+
+		//Run method here run any application context. We are creating a
+		//application context ctx
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
 
-		MyController myController = (MyController) ctx.getBean("myController");
+		//MyController is a class and we are creating a bean using the mycontroller objext
+		MyController myController = (MyController) ctx.getBean("myController");git
 
 		String greeting = myController.sayHello();
 
