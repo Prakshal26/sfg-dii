@@ -4,6 +4,20 @@
  PropertyInjectedGrettingService and SetterInjectedGreeting.
  Now we need to give qualifier so that it knows which bean to wire with which service.
 */
+/*
+Here we will create one service as a primary bean i.e if someone does not give qualifiers in controller
+it will by defaul execute service associated with this primary bean
+ */
+
+/*We have to specify primary service explicitly using @service. See we have created a PrimaryGreetingService
+class which will be our primary service.
+ */
+/*
+Precedence will be given to qualifier and if qualifier is not found that controller will take
+as primary service.
+ */
+//Check MyController class to see how we are running primary bean
+//there no need of qualifier and autowired
 
 package guru.springframework.sfgdi;
 
@@ -16,7 +30,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
-public class git SfgDiApplication {
+public class SfgDiApplication {
 
 	public static void main(String[] args) {
 
@@ -27,9 +41,8 @@ public class git SfgDiApplication {
 		//MyController is a class and we are creating a bean using the mycontroller objext
 		MyController myController = (MyController) ctx.getBean("myController");
 
-		String greeting = myController.sayHello();
 
-		System.out.println(greeting);
+		System.out.println(myController.sayHello());
 
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
 		System.out.println(propertyInjectedController.getGreeting());
