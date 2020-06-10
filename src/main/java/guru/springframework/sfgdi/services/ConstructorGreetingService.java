@@ -6,9 +6,10 @@ import org.springframework.stereotype.Service;
 //in COntroller. We have created the object of Gretting Servoce there and mentioned autowired i.e specifyng
 //that this is a service. But here we are explicitly saying yes this is a service.
 @Service
-public class GreetingServiceImpl implements GreetingService {
+public class ConstructorGreetingService implements GreetingService {
     @Override
     public String sayGreeting() {
-        return "HelloWorld";
+
+        return "HelloWorld Constructor";
     }
 }
