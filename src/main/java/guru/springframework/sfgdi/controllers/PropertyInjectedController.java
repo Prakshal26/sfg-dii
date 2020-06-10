@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class PropertyInjectedController {
 
-    //We have to give Qualifier as theree are three services so to which service to use.
+    //We have to give Qualifier as there are three services so to which service to use.
     //Class NAme: PropertyInjectedGreetingService Bean Name: propertyInjectedGreetingService
      @Qualifier("propertyInjectedGreetingService")
     //Autowired tells Spring that we want the injection of GrettingServices

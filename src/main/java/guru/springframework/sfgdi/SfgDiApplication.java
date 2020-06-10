@@ -1,30 +1,23 @@
-/*
- Previously we were using Same Service for all the three controller(Property,setter and Constructor based.
- BUt here we have created the different service for each of the controller(COnstructorGreetingService,
- PropertyInjectedGrettingService and SetterInjectedGreeting.
- Now we need to give qualifier so that it knows which bean to wire with which service.
-*/
-/*
-Here we will create one service as a primary bean i.e if someone does not give qualifiers in controller
-it will by defaul execute service associated with this primary bean
- */
 
-/*We have to specify primary service explicitly using @service. See we have created a PrimaryGreetingService
-class which will be our primary service.
+/*
+Till now we had Seen manual dependency injection then automated injection using service and autowired
+then we have seen qualifirs  then we have seen primary beans.
  */
 /*
-Precedence will be given to qualifier and if qualifier is not found that controller will take
-as primary service.
+Now we have given a name to a service calling it as service profiler. Check i18nEnglishGreetingService
+there we have given alias to service i.e i18nService
  */
-//Check MyController class to see how we are running primary bean
-//there no need of qualifier and autowired
+/*
+Now we can give it as a qualifier i.e directly in controller we will give that servie name and profile
+HEre we have created to i18n services with same service alias so now we have given a profile to them
+to distinguish between two services.
+Now when we will run it will pick profile. We have to specify the active profile in resources/application.properties
+there we have to mention one active profile and bean will run that.
+ */
 
 package guru.springframework.sfgdi;
 
-import guru.springframework.sfgdi.controllers.ConstructedInjectedController;
-import guru.springframework.sfgdi.controllers.MyController;
-import guru.springframework.sfgdi.controllers.PropertyInjectedController;
-import guru.springframework.sfgdi.controllers.SetterInjectedController;
+import guru.springframework.sfgdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -34,9 +27,19 @@ public class SfgDiApplication {
 
 	public static void main(String[] args) {
 
+
+
+
 		//Run method here run any application context. We are creating a
 		//application context ctx
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+		//i18nService
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
+
+
+
 
 		//MyController is a class and we are creating a bean using the mycontroller objext
 		MyController myController = (MyController) ctx.getBean("myController");
