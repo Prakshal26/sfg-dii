@@ -21,7 +21,23 @@ import guru.springframework.sfgdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+/*
+Now Inteelij is looking for all the classes and package which are inside guru.springframework.sfgdi
+as our SfgDiApplication is inside this folder. But what if some folder is outside sfgdi.
+Inteelij will not compile that and will throw some error.
+Suppose i copy my services folder outside the sfgdi directory then i have to explicitly tell
+my springbootapplication to scan this folder.
+This task is performed by @ComponentScan annotation
+ */
+/*
+BElow is the syntax of ComponentScan
+Assume we have copied services folder outside even though we have not. just assume
+One thing to note is that once we have given component annotation we have to then explicitly tell
+the path of all packages even the current one.
+ */
+//@ComponentScan(basePackages = "guru.springframework.services","guru.springframework.sfgdi")
 @SpringBootApplication
 public class SfgDiApplication {
 
