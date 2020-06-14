@@ -26,7 +26,7 @@ public class SfgDiApplication {
 
 		//MyController is a class and we are creating a bean using the mycontroller objext
 		MyController myController = (MyController) ctx.getBean("myController");
-
+		System.out.println("My Controller");
 		String greeting = myController.sayHello();
 
 		System.out.println(greeting);
@@ -35,7 +35,7 @@ public class SfgDiApplication {
 		In PropertyInjectedControler we have specified it to be as Controller
 		We need to explicitly say that that particular class is a controller.
 		 */
-		//In Greeting Service Class we have mentioned Greeting service to be a service.
+		//In Greeting Serviceimpl Class we have mentioned Greeting service to be a service.
 		// Now whenever we are using Greeting Service Class object we are giving it as Autowired i.e
 		//explicitly saying this is a service.
 		// This will be checked By autowired that we have given it as as Service.
@@ -54,15 +54,28 @@ public class SfgDiApplication {
 		and there we were creating a object using new keyword.Here no need of test class and creating
 		object as it will be done by spring.
 		 */
+		/*
+		We have created the object of PROPERTYINJECTEDCONTROLLER but wee have not given new. Earlier we were using
+		PropertyInjectedControllerTest in test folder where we were given the new keyword to create object.
+		Here we are not doing this, We have called getGreeting(). If we will open propertyInjectedController class
+		we will see it is using GreetingService data member and calling sayGreeting function.
+		How does PropertyInjectedController Class know where is the implememntation of saygreeeting function.
+		This is done by Service and Autowired.
+		In GreetingServiceImpl class we have given it to be a service and in propertyInjectedControllerClass we
+		are giveing autowired and that's how it knows it has to call that service.
+		 */
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
+		System.out.println("PropertyInjectedController");
 		System.out.println(propertyInjectedController.getGreeting());
 
 		//Do Same for setter based
 
 		SetterInjectedController setterInjectedController= (SetterInjectedController) ctx.getBean("setterInjectedController");
+		System.out.println("SetterInjectedController");
 		System.out.println(setterInjectedController.getGreeting());
 
-		ConstructedInjectedController constructedInjectedController= (ConstructedInjectedController) ctx.getBean("constructed	InjectedController");
+		ConstructedInjectedController constructedInjectedController= (ConstructedInjectedController) ctx.getBean("constructedInjectedController");
+		System.out.println("ConstructedInjectedController");
 		System.out.println(constructedInjectedController.getGreeting());
 
 	}

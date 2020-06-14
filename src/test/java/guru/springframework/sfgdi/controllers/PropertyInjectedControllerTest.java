@@ -1,3 +1,4 @@
+/*
 package guru.springframework.sfgdi.controllers;
 
 import guru.springframework.sfgdi.services.GreetingServiceImpl;
@@ -22,3 +23,4 @@ class PropertyInjectedControllerTest {
         System.out.println(controller.getGreeting());
     }
 }
+ */
