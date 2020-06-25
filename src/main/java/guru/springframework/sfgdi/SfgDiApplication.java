@@ -5,6 +5,16 @@ PropertyInjectedController: Using just a variable(Not used generally)
 SetterInjectedController: It used set methods for injection
 ConstructedInjectedController: It used Constructer.
 
+*****************************************************************************
+Note: In this example MyController is still doing automatic
+ dependency injection as we have given Controller annotation there.
+*************************************************************************************
+
+For Property,Setter and Constructed Controller we are not giving Controller annotation, instead
+we are ourselves creating controller for it inside test folder.
+There we have created the controller for us that will create the object of PropertyInjectedController
+explicitly using new keyword, not like above as we have done for Index.
+
 We have created a greeting service( It can be any service i.e the real task we want to perform.)
 Here our service is just Printing Hello World. In service folder we have created a Interface GettingService
 And we implmented the Interface in GettingServiceImpl Class.
@@ -40,9 +50,20 @@ public class SfgDiApplication {
 		//application context ctx
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
 
-		//MyController is a class and we are creating a bean using the mycontroller objext
+		/*MyController is a class and we are creating a bean using the mycontroller object.
+		By Default name of the bean is the class name just starting with lower case character.
+		It returns the object type so we need to typecast it,
+
+		*/
 		MyController myController = (MyController) ctx.getBean("myController");
 
+		/*
+		If we see we have never created the object of MyController Class (we never
+		did = new my controller like that we just created bean), so Spring Context is
+		creating that for us. We have given Controller on Mycontroller class so it creating object
+		of my controller class internally, that's why we are able to access it's method using
+		object mycontroller.
+		 */
 		String greeting = myController.sayHello();
 
 		System.out.println(greeting);
