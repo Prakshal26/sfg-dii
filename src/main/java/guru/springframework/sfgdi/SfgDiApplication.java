@@ -3,6 +3,14 @@ Here we are not changing the previous code. Just in this main application file o
 be able to run the program without the need of Test Files. It is the additional functionality that
 we get from the framework i.e spring framework. i.e how automatically dependency injection is performed
 by the spring.
+
+Previously we have seen that we were manual creating the controllers in test folder which was creating thr
+object of PropertyInjectedController etc. But here we dont need to create controller by ourself.
+we can just give @controller annotation and that will automatically create the object of
+the class where we have given that annotation. Here we will give @controller annotation on the classes
+like PropertyInjectedController etc.
+As a result we do not have to create the object of those classes explicity using new keyword, spring will
+create that for us.
  */
 
 package guru.springframework.sfgdi;
@@ -40,7 +48,7 @@ public class SfgDiApplication {
 		//explicitly saying this is a service.
 		// This will be checked By autowired that we have given it as as Service.
 		/*
-		Autowired: It seels the object it is looking is a service
+		Autowired: It seeks the object it is looking is a service
 		Service : It is used to make that class as Service class.
 		What does it mean that i am service class: For service class we need not object. NEither we
 		dont need to create object of controllers like we were doing in test.
